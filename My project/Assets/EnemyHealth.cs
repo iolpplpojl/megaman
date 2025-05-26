@@ -8,6 +8,14 @@ public class EnemyHealth : MonoBehaviour,Health
     public void getDamage(float Damage)
     {
         Health -= Damage;
+
+        EnemyMover mov = GetComponent<EnemyMover>();
+
+        if(mov != null)
+        {
+            mov.onHit();
+        }
+
         if (Health < 0)
         {
             Destroy(gameObject);
