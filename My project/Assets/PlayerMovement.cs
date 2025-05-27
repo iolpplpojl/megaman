@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,15 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.started || context.performed)
-        {
-            animator.SetBool("Walk",true);
-        }
-        else if (context.canceled)
-        {
-            animator.SetBool("Walk", false);
-
-        }
         inputVec = context.ReadValue<Vector2>();
     }
 
@@ -61,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Walk", true);
             ren.flipX = false;
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
         }
         if (!jumpable)
         {
@@ -95,9 +91,52 @@ public class PlayerMovement : MonoBehaviour
             jumpable = false;
         }
     }
+
+    public void Knockback(GameObject kber)
+    {
+        if (!knockbacked)
+        {
+            float x = 0;
+            if (transform.position.x - kber.transform.position.x >= 0)
+            {
+                x = 1;
+            }
+            else
+            {
+                x = -1;
+            }
+            rb.linearVelocity = new Vector2(0, 0);
+
+            rb.AddForce(new Vector2(x * 3, 3), ForceMode2D.Impulse);
+            jumpable = false;
+            StartCoroutine(knockbacklogic());
+        }
+    }
+
+    public bool knockbacked = false;
+    float knockbacktime = 0.2f;
+    float knockbacktimenow;
+    IEnumerator knockbacklogic()
+    {
+        jumpable = false;
+        knockbacktimenow = knockbacktime;
+        while (jumpable == false || knockbacktimenow > 0)
+        {
+            knockbacked = true;
+            knockbacktimenow -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        
+        knockbacked = false;
+    }
+
     void move(Vector2 norVec)
     {
-        rb.linearVelocity = new Vector2(norVec.x * speed, rb.linearVelocity.y);
+        if (!knockbacked)
+        {
+            rb.linearVelocity = new Vector2(norVec.x * speed, rb.linearVelocity.y);
+        }
     }
+
 
 }

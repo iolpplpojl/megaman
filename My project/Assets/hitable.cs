@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class hitable : MonoBehaviour
 {
+
     public void hit(GameObject attacker, float Damage)
     {
         if (attacker.transform.gameObject == transform.parent.gameObject)
@@ -10,6 +11,6 @@ public class hitable : MonoBehaviour
             return;
         }
         Debug.Log("¾Æ¾ß!" + transform.name);
-        GetComponentInParent<Health>().getDamage(Damage);
+        GetComponentInParent<Health>().getDamage(Damage,attacker);
     }
 }

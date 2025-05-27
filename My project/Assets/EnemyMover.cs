@@ -1,24 +1,38 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
     public Transform Target;
     Rigidbody2D rb;
-
+    public float find;
+    bool isFind = false;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(Jump());
     }
 
 
     float hit = 0.0f;
     public float speed;
+    public float jump;
     private void Update()
     {
-        if (hit <= 0)
+        if(isFind == false)
+        {
+            var hit = Physics2D.OverlapCircle(transform.position, find, LayerMask.GetMask("player"));
+            if (hit != null)
+            {
+                isFind = true;
+            }
+        }
+
+        if (hit <= 0 && isFind == true)
         {
             Vector2 nor = (new Vector2(Target.position.x, 0) - new Vector2(transform.position.x, 0)).normalized;
-            rb.linearVelocity = (nor * speed);
+            rb.linearVelocity = new Vector2((nor * speed).x, rb.linearVelocity.y);
+            
         }
         else
         {
@@ -31,5 +45,24 @@ public class EnemyMover : MonoBehaviour
     {
         rb.linearVelocityX = 0;
         hit = hitDelay;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, find);
+    }
+    void doJump()
+    {
+
+        rb.AddForce(new Vector2(0, jump), ForceMode2D.Impulse);
+
+    }
+    IEnumerator Jump()
+    {
+        while (true)
+        {
+            doJump();
+            yield return new WaitForSeconds(10.0f);
+        }
     }
 }
