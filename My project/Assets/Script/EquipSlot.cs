@@ -8,14 +8,18 @@ public class EquipSlot : Slot
 
     Image sprite;
 
-    private void Awake()
+    protected void Awake()
     {
+        base.Awake();
         sprite = GetComponent<Image>();
     }
 
 
-    private void Update()
+    protected void Update()
     {
+
+        base.Update();
+
         Equipment equipment = pos switch
         {
             EQIUPPOS.helmet => PlayerEquipment.Instance?.helmet,

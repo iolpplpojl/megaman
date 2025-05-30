@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Weapon
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   id: 0
-  itemname: 
+  itemname: a
   sprite: {fileID: 9121288638837639837, guid: fe04cfa7101aa1544966b195839991cf, type: 3}
   weight: 0
   health: 0

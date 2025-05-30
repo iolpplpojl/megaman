@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: New Helmet
   m_EditorClassIdentifier: Assembly-CSharp::Helmet
   id: 0
-  itemname: 
-  sprite: {fileID: -1376612707, guid: 898673d876135e341a005765054487b7, type: 3}
+  itemname: d
+  sprite: {fileID: -1148715811, guid: 898673d876135e341a005765054487b7, type: 3}
   weight: 0
   health: 0
   armor: 0
