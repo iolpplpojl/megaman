@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
@@ -20,7 +21,7 @@ public class PlayerEquipment : MonoBehaviour
 public void Equip(Equipment item)
 {
     Equipment clonedItem = Instantiate(item); // 장비 복제
-
+    clonedItem.SetUp();
     if (clonedItem is Weapon)
     {
         weapon = (Weapon)clonedItem;

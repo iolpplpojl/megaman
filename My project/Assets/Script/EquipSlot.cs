@@ -6,6 +6,7 @@ public class EquipSlot : Slot
 {
     public EQIUPPOS pos;
 
+    public Equipment item;
     Image sprite;
 
     protected void Awake()
@@ -22,15 +23,19 @@ public class EquipSlot : Slot
 
         Equipment equipment = pos switch
         {
-            EQIUPPOS.helmet => PlayerEquipment.Instance?.helmet,
-            EQIUPPOS.chest => PlayerEquipment.Instance?.chest,
-            EQIUPPOS.gloves => PlayerEquipment.Instance?.gloves,
-            EQIUPPOS.pants => PlayerEquipment.Instance?.pants,
-            EQIUPPOS.shoes => PlayerEquipment.Instance?.shoes,
-            EQIUPPOS.weapon => PlayerEquipment.Instance?.weapon,
+            EQIUPPOS.helmet => PlayerEquipment.instance?.helmet,
+            EQIUPPOS.chest => PlayerEquipment.instance?.chest,
+            EQIUPPOS.gloves => PlayerEquipment.instance?.gloves,
+            EQIUPPOS.pants => PlayerEquipment.instance?.pants,
+            EQIUPPOS.shoes => PlayerEquipment.instance?.shoes,
+            EQIUPPOS.weapon => PlayerEquipment.instance?.weapon,
             _ => null
         };
 
+        if (equipment != null)
+        {
+            item = equipment;
+        }
         sprite.sprite = equipment?.sprite;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Debuffer : MonoBehaviour
@@ -23,7 +24,7 @@ public class Debuffer : MonoBehaviour
         int count = Mathf.CeilToInt(time * 60); // 60번 반복 (예: time=1초 -> 60번)
 
         for(int i = 0; i < count; i++){
-            Owner_health.getDamage(damage/60f);
+            Owner_health.getRawDamage(damage/60f);
             yield return new WaitForFixedUpdate();
         }
 

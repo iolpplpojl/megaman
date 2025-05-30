@@ -8,6 +8,14 @@ public class EnemyHealth : MonoBehaviour,Health
 
 
 
+    public void getRawDamage(float Damage)
+    {
+        Health -= (Damage - PlayerStat.instance.armor);
+        if (Health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void getDamage(float Damage, GameObject attacker)
     {
         Health -= Damage;

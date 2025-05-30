@@ -16,8 +16,11 @@ MonoBehaviour:
   itemname: a
   sprite: {fileID: 9121288638837639837, guid: fe04cfa7101aa1544966b195839991cf, type: 3}
   weight: 0
+  desc: asd
   health: 0
   armor: 0
+  effects:
+  - {fileID: 11400000, guid: 79b1a36d18fdfe14395b30bcf5fcf4fe, type: 2}
   damage: 12
   range: 1.4
   speed: 0

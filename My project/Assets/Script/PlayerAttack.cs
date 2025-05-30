@@ -40,11 +40,11 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("Attack");
             animator.Play("player_snap", -1, 0f);
             var hit = Physics2D.OverlapCircleAll(newAttackpos, attackRadius + PlayerEquipment.instance.weapon?.range ?? 0f, LayerMask.GetMask("hitable"));
-            PlayerEquipment.instance.weapon.OnAttack(hit[0].GetComponent<hitable>(), gameObject);
+            PlayerEquipment.instance.weapon.OnAttack(hit[0].gameObject, gameObject);
 
             foreach(var h in hit)
             {
-                PlayerEquipment.instance.weapon.OnHit(h.GetComponent<hitable>(), gameObject);
+                PlayerEquipment.instance.weapon.OnHit(h.gameObject, gameObject);    
                 h.GetComponent<hitable>().hit(transform.gameObject, 2f + PlayerEquipment.instance.weapon?.damage ?? 0f);
             }
         }

@@ -31,7 +31,7 @@ public class PlayerStat : MonoBehaviour,IStat
 
         damage = pw.damage;
         range = pw.range;
-        atkspeed = pw.atkspeed;
+        atkspeed = pw.speed;
 
         maxHealth = 20 
             + (pw != null ? pw.health : 0) 

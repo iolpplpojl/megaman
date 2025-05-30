@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -21,6 +23,10 @@ public class InventoryUI : MonoBehaviour
 
     int idx = -1;
 
+    public Image descIcon;
+    public TMP_Text descTitle;
+    public TMP_Text desc;
+
     public void OnOpen(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -31,6 +37,32 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+
+
+    private void Update()
+
+    {
+        if (idx != -1)
+        {
+            if (isEquip)
+            {
+                if (equipSlots[idx].item != null)
+                {
+                    descIcon.sprite = equipSlots[idx].item.sprite;
+                    descTitle.text = equipSlots[idx].item.itemname;
+                    desc.text = equipSlots[idx].item.getDesc();
+                }
+            }
+            else
+            {
+
+                descIcon.sprite = InventorySystem.instance.inventory.items[idx].sprite;
+                descTitle.text = InventorySystem.instance.inventory.items[idx].itemname;
+                desc.text = InventorySystem.instance.inventory.items[idx].getDesc();
+            }
+        }
+    
+    }
 
 
     void ResetUI()

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, Health
@@ -5,7 +7,6 @@ public class PlayerHealth : MonoBehaviour, Health
     public float health;
     public float Health { get => health; set => health = value; }
 
-    public float maxhealth;
 
 
 
@@ -24,7 +25,7 @@ public class PlayerHealth : MonoBehaviour, Health
     public void getDamage(float Damage, GameObject attacker)
     {
 
-        triggerOnHurt();
+        triggerOnHurt(Damage,attacker);
         Health -= (Damage - PlayerStat.instance.armor);
 
         rb.Knockback(attacker);
@@ -34,14 +35,29 @@ public class PlayerHealth : MonoBehaviour, Health
         }
     }
 
+    public void getRawDamage(float Damage)
+    {
+        Health -= (Damage - PlayerStat.instance.armor);
+        if (Health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void Heal(float amount)
+    {
+        health += amount;
+        if(health > PlayerStat.instance.maxHealth)
+        {
+            health = PlayerStat.instance.maxHealth;
+        }
+
+    }
     public void triggerOnHurt(float Damage, GameObject attacker)
     {
         List<Equipment> e = PlayerEquipment.instance.GetAllEquipped();
         foreach(var a in e)
         {
-            a.OnHurt(
-                //인자
-            )
+            a.OnHurt(gameObject,attacker);
         }
     }
 

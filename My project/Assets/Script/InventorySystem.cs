@@ -12,6 +12,12 @@ public class InventorySystem : MonoBehaviour
         instance = this;
     }
 
+    public void getItem(Item item)
+    {
+        Item i = Instantiate(item);
+        i.SetUp();
+        inventory.items.Add(i);    
+    }
 }
 
 
