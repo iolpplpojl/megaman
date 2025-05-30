@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
-    public static PlayerEquipment Instance;
+    public static PlayerEquipment instance;
     public Weapon weapon;
     public Helmet helmet;
     public Gloves gloves;
@@ -13,35 +13,69 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
-    public void Equip(Equipment item)
+
+public void Equip(Equipment item)
+{
+    Equipment clonedItem = Instantiate(item); // 장비 복제
+
+    if (clonedItem is Weapon)
     {
-        if(item as Weapon)
-        {
-            weapon = (Weapon)item;
-        }
-        if(item as Helmet)
-        {
-            helmet = (Helmet)item;
-        }
-        if( item as Gloves)
-        {
-            gloves = (Gloves)item;
-        }
-        if (item as Pants)
-        {
-            pants = (Pants)item;
-        }
-        if(item as Chest)
-        {
-            chest = (Chest)item;
-        }
-        if(item as Shoes)
-        {
-            shoes = (Shoes)item;
-        }
-
+        weapon = (Weapon)clonedItem;
     }
+    else if (clonedItem is Helmet)
+    {
+        helmet = (Helmet)clonedItem;
+    }
+    else if (clonedItem is Gloves)
+    {
+        gloves = (Gloves)clonedItem;
+    }
+    else if (clonedItem is Pants)
+    {
+        pants = (Pants)clonedItem;
+    }
+    else if (clonedItem is Chest)
+    {
+        chest = (Chest)clonedItem;
+    }
+    else if (clonedItem is Shoes)
+    {
+        shoes = (Shoes)clonedItem;
+    }
+
+    PlayerStat.instance.getStatChange();
+}
+
+    public void UnEquip(int idx){
+        switch(idx){
+            case 0:
+                weapon = null;
+                break; 
+            case 1:
+                helmet = null;
+                break;
+            case 2:
+                gloves = null;
+                break;
+            case 3:
+                pants = null;
+                break;
+            case 4: 
+                chest = null;
+                break;
+            case 5: 
+                shoes=  null; 
+                break;
+                
+        }
+        PlayerStat.instance.getStatChange();
+    }
+    public List<Equipment> GetAllEquipped()
+    {
+        return new List<Equipment> { weapon, helmet, gloves, pants, chest, shoes };
+    }
+
 }

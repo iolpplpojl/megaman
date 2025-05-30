@@ -5,6 +5,9 @@ public class EnemyHealth : MonoBehaviour,Health
     public float health;
     public float Health { get => health; set => health = value; }
 
+
+
+
     public void getDamage(float Damage, GameObject attacker)
     {
         Health -= Damage;

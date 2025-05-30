@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        float range = PlayerEquipment.Instance?.weapon?.range ?? 0f;
+        float range = PlayerEquipment.instance?.weapon?.range ?? 0f;
         if (spriteRenderer.flipX)
         {
             newAttackpos = new Vector3(attackpos.position.x + (attackpos.localPosition.x * -2) - range, attackpos.position.y);
@@ -35,14 +35,17 @@ public class PlayerAttack : MonoBehaviour
         if (context.started)
         {
 
-           float range = PlayerEquipment.Instance?.weapon?.range ?? 0f;
+           float range = PlayerEquipment.instance?.weapon?.range ?? 0f;
 
             Debug.Log("Attack");
             animator.Play("player_snap", -1, 0f);
-            var hit = Physics2D.OverlapCircleAll(newAttackpos, attackRadius + PlayerEquipment.Instance.weapon?.range ?? 0f, LayerMask.GetMask("hitable"));
+            var hit = Physics2D.OverlapCircleAll(newAttackpos, attackRadius + PlayerEquipment.instance.weapon?.range ?? 0f, LayerMask.GetMask("hitable"));
+            PlayerEquipment.instance.weapon.OnAttack(hit[0].GetComponent<hitable>(), gameObject);
+
             foreach(var h in hit)
             {
-                h.GetComponent<hitable>().hit(transform.gameObject, 2f + PlayerEquipment.Instance.weapon?.damage ?? 0f);
+                PlayerEquipment.instance.weapon.OnHit(h.GetComponent<hitable>(), gameObject);
+                h.GetComponent<hitable>().hit(transform.gameObject, 2f + PlayerEquipment.instance.weapon?.damage ?? 0f);
             }
         }
     }
@@ -50,7 +53,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        float range = PlayerEquipment.Instance?.weapon?.range ?? 0f;
+        float range = PlayerEquipment.instance?.weapon?.range ?? 0f;
         Gizmos.DrawWireSphere(newAttackpos, attackRadius + range);
 
     }
