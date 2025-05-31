@@ -7,6 +7,7 @@ public class ItemDatabase : MonoBehaviour
 
     public List<Item> item;
 
+    public GameObject dropPref;
     private void Awake()
     {
         Instance = this;
@@ -64,7 +65,7 @@ public class Equipment : Item
 
     public override string getDesc()
     {
-        string desc = "";
+        string desc = this.desc + "\n";
         foreach(var e in cEffect){
             desc += e.getDesc() + "\n";
         } 

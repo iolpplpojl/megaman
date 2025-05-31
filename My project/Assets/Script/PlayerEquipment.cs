@@ -76,7 +76,15 @@ public void Equip(Equipment item)
     }
     public List<Equipment> GetAllEquipped()
     {
-        return new List<Equipment> { weapon, helmet, gloves, pants, chest, shoes };
-    }
+        List<Equipment> equipped = new List<Equipment>();
 
+        if (weapon != null) equipped.Add(weapon);
+        if (helmet != null) equipped.Add(helmet);
+        if (gloves != null) equipped.Add(gloves);
+        if (pants != null) equipped.Add(pants);
+        if (chest != null) equipped.Add(chest);
+        if (shoes != null) equipped.Add(shoes);
+
+        return equipped;
+    }
 }

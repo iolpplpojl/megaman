@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New Semi Effect_Explosive
   m_EditorClassIdentifier: Assembly-CSharp::SemiEffect_Explosive
+  damage: 0

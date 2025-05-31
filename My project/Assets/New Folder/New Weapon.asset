@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: New Weapon
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
   id: 0
-  itemname: a
-  sprite: {fileID: 9121288638837639837, guid: fe04cfa7101aa1544966b195839991cf, type: 3}
+  itemname: "\uC7A1\uCD08"
+  sprite: {fileID: 3034221147481240869, guid: fe04cfa7101aa1544966b195839991cf, type: 3}
   weight: 0
-  desc: asd
+  desc: "\uB2C8\uC5C4\uB9C8"
   health: 0
   armor: 0
   effects:
   - {fileID: 11400000, guid: 79b1a36d18fdfe14395b30bcf5fcf4fe, type: 2}
-  damage: 12
-  range: 1.4
+  damage: 0
+  range: 0.3
   speed: 0

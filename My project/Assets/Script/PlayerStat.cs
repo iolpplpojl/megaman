@@ -12,6 +12,10 @@ public class PlayerStat : MonoBehaviour,IStat
     public float armor;
     public float speed;
 
+    public float basicDamage;
+    public float basicSpeed;
+    public float basicHealth;
+
     public float MaxHealth { get => maxHealth; set => maxHealth = value; }
     public float Armor { get => armor; set => armor = value; }
     public float Speed { get => speed; set => speed = value; }
@@ -19,7 +23,11 @@ public class PlayerStat : MonoBehaviour,IStat
     private void Awake(){
         instance = this;
     }
-    
+    void Start()
+    {
+        getStatChange();
+
+    }
     public void getStatChange(){
         PlayerEquipment p = PlayerEquipment.instance;
         var pw = p.weapon;
@@ -29,11 +37,11 @@ public class PlayerStat : MonoBehaviour,IStat
         var pc = p.chest;
         var ps = p.shoes;
 
-        damage = pw.damage;
-        range = pw.range;
-        atkspeed = pw.speed;
+        damage = basicDamage + (pw != null ? pw.damage : 0);
+        range = (pw != null ? pw.range : 0f);
+        atkspeed = (pw != null ? pw.speed : 1f);
 
-        maxHealth = 20 
+        maxHealth = basicHealth
             + (pw != null ? pw.health : 0) 
             + (ph != null ? ph.health : 0) 
             + (pg != null ? pg.health : 0) 
@@ -49,7 +57,7 @@ public class PlayerStat : MonoBehaviour,IStat
             + (pc != null ? pc.armor : 0) 
             + (ps != null ? ps.armor : 0);
 
-        speed = 0;
+        speed = basicSpeed;
 
     }
 
