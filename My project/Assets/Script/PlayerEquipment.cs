@@ -59,12 +59,10 @@ public void Equip(Equipment item)
                 break;
             case 1:
                 InventorySystem.instance.getItem(gloves);
-
                 gloves = null;
                 break;
             case 2:
                 InventorySystem.instance.getItem(pants);
-
                 pants = null;
                 break;
             case 3:
