@@ -16,6 +16,7 @@ public class ItemDatabase : MonoBehaviour
 }
 
 [System.Serializable]
+[CreateAssetMenu(menuName = "Items/Item")]
 public class Item : ScriptableObject
 {
     public int id;
@@ -74,6 +75,7 @@ public class Equipment : Item
     }
 
 }
+
 [CreateAssetMenu(menuName = "Items/Equipment/Weapon")]
 public class Weapon : Equipment
 {

@@ -51,26 +51,35 @@ public void Equip(Equipment item)
 }
 
     public void UnEquip(int idx){
-        switch(idx){
+        switch(idx)
+        {
             case 0:
-                weapon = null;
-                break; 
-            case 1:
+                InventorySystem.instance.getItem(helmet);
                 helmet = null;
                 break;
-            case 2:
+            case 1:
+                InventorySystem.instance.getItem(gloves);
+
                 gloves = null;
                 break;
-            case 3:
+            case 2:
+                InventorySystem.instance.getItem(pants);
+
                 pants = null;
                 break;
-            case 4: 
+            case 3:
+                InventorySystem.instance.getItem(chest);
                 chest = null;
                 break;
-            case 5: 
-                shoes=  null; 
+            case 4:
+                InventorySystem.instance.getItem(shoes);
+                shoes =  null; 
                 break;
-                
+            case 5:
+                InventorySystem.instance.getItem(weapon);
+                weapon = null;
+                break;
+
         }
         PlayerStat.instance.getStatChange();
     }

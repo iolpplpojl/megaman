@@ -27,6 +27,9 @@ public class InventoryUI : MonoBehaviour
     public TMP_Text descTitle;
     public TMP_Text desc;
 
+    public TMP_Text selectText;
+
+
     public void OnOpen(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -51,6 +54,12 @@ public class InventoryUI : MonoBehaviour
                     descIcon.sprite = equipSlots[idx].item.sprite;
                     descTitle.text = equipSlots[idx].item.itemname;
                     desc.text = equipSlots[idx].item.getDesc();
+                    selectText.text = "C : ¹þ±â";
+                }
+                else
+                {
+
+                    selectText.text = "";
                 }
             }
             else
@@ -59,7 +68,20 @@ public class InventoryUI : MonoBehaviour
                 descIcon.sprite = InventorySystem.instance.inventory.items[idx].sprite;
                 descTitle.text = InventorySystem.instance.inventory.items[idx].itemname;
                 desc.text = InventorySystem.instance.inventory.items[idx].getDesc();
+                if (InventorySystem.instance.inventory.items[idx] is Equipment)
+                {
+                    selectText.text = "C : Âø¿ë";
+                }
+                else
+                {
+                    selectText.text = "C : »ç¿ë";
+                }
+
             }
+        }
+        else
+        {
+            selectText.text = "";
         }
     
     }
@@ -193,12 +215,24 @@ public class InventoryUI : MonoBehaviour
             if (isEquip)
             {
                 slot = equipSlots[idx];
+                PlayerEquipment.instance.UnEquip(idx);
             }
             else
             {
                 slot = item[idx];
+                if (InventorySystem.instance.inventory.items[idx] is Equipment)
+                {
+                    PlayerEquipment.instance.Equip(InventorySystem.instance.inventory.items[idx] as Equipment);
+                    InventorySystem.instance.inventory.items.Remove(InventorySystem.instance.inventory.items[idx]);
+                }
+                else
+                {
+                    Debug.Log("¾ÆÀÌÅÛ ½è¾î");
+                }
+
             }
             Debug.Log(slot);
+            ResetUI();
         }
     }
     public void OnCancel(InputAction.CallbackContext context)
