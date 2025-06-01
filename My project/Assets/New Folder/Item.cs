@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "Items/Item")]
+[CreateAssetMenu(menuName = "Items/")]
 public class Item : ScriptableObject
 {
     public int id;
@@ -17,5 +17,10 @@ public class Item : ScriptableObject
     public virtual string getDesc()
     {
         return desc;
+    }
+
+    public virtual void Use()
+    {
+
     }
 }

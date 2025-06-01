@@ -13,8 +13,21 @@ public class EnemyHealth : MonoBehaviour,Health
         Health -= (Damage - PlayerStat.instance.armor);
         if (Health < 0)
         {
-            Destroy(gameObject);
+
+            die();
         }
+    }
+    void die()
+    {
+        var o = GetComponent<EnemyInventory>();
+        if (o != null)
+        {
+            o.Drop();
+
+        }
+        Destroy(gameObject);
+
+
     }
     public void getDamage(float Damage, GameObject attacker)
     {
@@ -29,7 +42,7 @@ public class EnemyHealth : MonoBehaviour,Health
 
         if (Health < 0)
         {
-            Destroy(gameObject);
+            die();
         };
     }
 

@@ -30,6 +30,9 @@ public class InventoryUI : MonoBehaviour
     public TMP_Text selectText;
 
 
+    public GameObject Player;
+
+
     public void OnOpen(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -210,29 +213,35 @@ public class InventoryUI : MonoBehaviour
     {
         if (context.started)
         {
-
-            Slot slot;
-            if (isEquip)
+            if (idx != -1)
             {
-                slot = equipSlots[idx];
-                PlayerEquipment.instance.UnEquip(idx);
-            }
-            else
-            {
-                slot = item[idx];
-                if (InventorySystem.instance.inventory.items[idx] is Equipment)
+                Slot slot;
+                if (isEquip)
                 {
-                    PlayerEquipment.instance.Equip(InventorySystem.instance.inventory.items[idx] as Equipment);
-                    InventorySystem.instance.inventory.items.Remove(InventorySystem.instance.inventory.items[idx]);
+                    slot = equipSlots[idx];
+                    PlayerEquipment.instance.UnEquip(idx);
                 }
                 else
                 {
-                    Debug.Log("æ∆¿Ã≈€ ΩËæÓ");
-                }
+                    slot = item[idx];
+                    Item it = InventorySystem.instance.inventory.items[idx];
+                    if (it is Equipment)
+                    {
+                        PlayerEquipment.instance.Equip(InventorySystem.instance.inventory.items[idx] as Equipment);
+                        InventorySystem.instance.inventory.items.Remove(InventorySystem.instance.inventory.items[idx]);
+                    }
+                    else if(it is Potion) 
+                    {
 
+                        (it as Potion).Use(Player);
+                        InventorySystem.instance.inventory.items.Remove(it);
+
+                    }
+
+                }
+                Debug.Log(slot);
+                ResetUI();
             }
-            Debug.Log(slot);
-            ResetUI();
         }
     }
     public void OnCancel(InputAction.CallbackContext context)

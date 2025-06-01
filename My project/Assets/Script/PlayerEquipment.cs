@@ -18,37 +18,62 @@ public class PlayerEquipment : MonoBehaviour
     }
 
 
-public void Equip(Equipment item)
-{
-    Equipment clonedItem = Instantiate(item); // 장비 복제
-    clonedItem.SetUp();
-    if (clonedItem is Weapon)
+    public void Equip(Equipment item)
     {
-        weapon = (Weapon)clonedItem;
-    }
-    else if (clonedItem is Helmet)
-    {
-        helmet = (Helmet)clonedItem;
-    }
-    else if (clonedItem is Gloves)
-    {
-        gloves = (Gloves)clonedItem;
-    }
-    else if (clonedItem is Pants)
-    {
-        pants = (Pants)clonedItem;
-    }
-    else if (clonedItem is Chest)
-    {
-        chest = (Chest)clonedItem;
-    }
-    else if (clonedItem is Shoes)
-    {
-        shoes = (Shoes)clonedItem;
-    }
+        Equipment clonedItem = Instantiate(item);
+        clonedItem.SetUp();
 
-    PlayerStat.instance.getStatChange();
-}
+        if (clonedItem is Weapon)
+        {
+            if (weapon != null)
+            {
+                InventorySystem.instance.getItem(weapon);
+            }
+            weapon = (Weapon)clonedItem;
+        }
+        else if (clonedItem is Helmet)
+        {
+            if (helmet != null)
+            {
+                InventorySystem.instance.getItem(helmet);
+            }
+            helmet = (Helmet)clonedItem;
+        }
+        else if (clonedItem is Gloves)
+        {
+            if (gloves != null)
+            {
+                InventorySystem.instance.getItem(gloves);
+            }
+            gloves = (Gloves)clonedItem;
+        }
+        else if (clonedItem is Pants)
+        {
+            if (pants != null)
+            {
+                InventorySystem.instance.getItem(pants);
+            }
+            pants = (Pants)clonedItem;
+        }
+        else if (clonedItem is Chest)
+        {
+            if (chest != null)
+            {
+                InventorySystem.instance.getItem(chest);
+            }
+            chest = (Chest)clonedItem;
+        }
+        else if (clonedItem is Shoes)
+        {
+            if (shoes != null)
+            {
+                InventorySystem.instance.getItem(shoes);
+            }
+            shoes = (Shoes)clonedItem;
+        }
+
+        PlayerStat.instance.getStatChange();
+    }
 
     public void UnEquip(int idx){
         switch(idx)

@@ -16,8 +16,4 @@ public class EnemyInventory : MonoBehaviour
             o.GetComponent<DroppedItem>().setUp(clone);
         }
     }
-    private void OnDestroy()
-    {
-        Drop();
-    }
 }
