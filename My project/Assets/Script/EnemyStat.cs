@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyStat : MonoBehaviour, IStat
 {
+    public int id;
     public float maxHealth;
     public float armor;
     public float speed;

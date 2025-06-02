@@ -36,8 +36,14 @@ public class PlayerAttack : MonoBehaviour
         {
             Debug.Log("Attack");
             animator.Play("player_snap", -1, 0f);
-            var hit = Physics2D.OverlapCircleAll(newAttackpos, attackRadius + PlayerStat.instance.range, LayerMask.GetMask("hitable"));
-            if (hit.Length != 0)
+        var hit = Physics2D.OverlapCapsuleAll(
+            newAttackpos, 
+            new Vector2(attackRadius + PlayerStat.instance.range, attackRadius), 
+            CapsuleDirection2D.Horizontal, 
+            0f, 
+            LayerMask.GetMask("hitable")
+            );            
+        if (hit.Length != 0)
             {
                 PlayerEquipment.instance.weapon?.OnAttack(hit[0].gameObject, gameObject);
             }

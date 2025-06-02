@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class EnemyInventory : MonoBehaviour
 {
-    public Item item;
+    public List<Item> item;
 
 
 
     public void Drop()
     {
-        if (item != null)
-        {
+        foreach (var i in item){
             GameObject o = Instantiate(ItemDatabase.Instance.dropPref, transform.position, Quaternion.identity);
-            Item clone = Instantiate(item);
+            Item clone = Instantiate(i);
             clone.SetUp();
             o.GetComponent<DroppedItem>().setUp(clone);
         }

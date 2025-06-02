@@ -13,7 +13,7 @@ public class DroppedItem : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(0, 3f),ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(Random.Range(-1,1f), Random.Range(2f,4f)),ForceMode2D.Impulse);
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 

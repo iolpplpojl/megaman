@@ -14,6 +14,11 @@ public class InventorySystem : MonoBehaviour
 
     public void getItem(Item item)
     {
+        if(item is Gold){
+            Gold gold = item as Gold;
+            gold.getGold();
+            return;
+        }
         Item i = Instantiate(item);
         i.SetUp();
         inventory.items.Add(i);    

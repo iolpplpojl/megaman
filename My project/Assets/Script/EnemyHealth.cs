@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour,Health
     public float health;
     public float Health { get => health; set => health = value; }
 
+    public static event Action<int> DeathSignal;
 
 
 
@@ -23,8 +24,9 @@ public class EnemyHealth : MonoBehaviour,Health
         if (o != null)
         {
             o.Drop();
-
+            
         }
+        DeathSignal?.Invoke(GetComponent<EnemyStat>().id);
         Destroy(gameObject);
 
 
