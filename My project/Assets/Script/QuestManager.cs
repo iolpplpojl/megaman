@@ -1,21 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-
-    public List<Quest> quest;
+    public static QuestManager instance;    
+    public List<QuestProgress> now_quest;
 
     void Start(){
-        Enemy.DeathSignal += EnemyDeath;
+        instance = this;
+        EnemyHealth.DeathSignal += EnemyDeath;
     }
 
     public void EnemyDeath(int id){
-        foreach(var q in quest){
-            if(q.require.req == Require.EnemyDie){
-                if(q.require.id == id){
-                    q.require.nowamount++;
-                    if(q.require.needamount == q.require.needamount){
-                        QuestClear();
+        Debug.Log(string.Format("{0}번 적 사망!",id));
+
+        foreach (QuestProgress progress in now_quest)
+        {
+            if(progress.questData.require.req == Require.EnemyDie)
+            {
+                if(progress.questData.require.id == id)
+                {
+                    progress.currentAmount++;
+                    if(progress.questData.require.needamount == progress.currentAmount)
+                    {
+                        Debug.Log("퀘스트 완료!");
+                        progress.isCompleted = true;
                     }
                 }
             }
@@ -24,6 +33,12 @@ public class QuestManager : MonoBehaviour
 
     public void QuestClear(){
         //...
+    }
+    public void QuestStart(Quest quest)
+    {
+        Debug.Log("퀘스트 시작!");
+        QuestProgress a = new QuestProgress(quest);
+        now_quest.Add(a);
     }
 }
 
@@ -42,16 +57,7 @@ public class QuestProgress
 }
 
 
-public class Quest : ScriptableObject{
-    int questId;
-    QuestRequire require;
-}
 
-public class QuestRequire : ScriptableObject{
-    public Require req;
-    public int id;
-    public int needamount;
-}
 public enum Require{
     EnemyDie,
     Collect

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: New Potion
   m_EditorClassIdentifier: 
   id: 0
-  itemname: 
-  sprite: {fileID: 0}
+  itemname: "\uC57D\uCD08"
+  sprite: {fileID: -1148715811, guid: 898673d876135e341a005765054487b7, type: 3}
   weight: 0
   desc: 
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: ed43bc24ae2fda14ea1402b1ac86472d, type: 2}

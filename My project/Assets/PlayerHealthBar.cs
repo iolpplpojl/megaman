@@ -8,11 +8,15 @@ public class PlayerHealthBar : MonoBehaviour
     void Start()
     {
         bar = GetComponent<Slider>();
+        PlayerHealth.HealthChanged += setUi;
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void setUi(float amount)
     {
-        bar.value = ph.health / PlayerStat.instance.maxHealth;
+        Debug.Log(amount);
+        bar.value = amount / PlayerStat.instance.maxHealth;
+
     }
 }

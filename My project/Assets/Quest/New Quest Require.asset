@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e61599446da257447b7a64f6e25f46b9, type: 3}
-  m_Name: New Potion Effect_Heal
+  m_Script: {fileID: 11500000, guid: b63209cf579075d44851dc1bfff1b78b, type: 3}
+  m_Name: New Quest Require
   m_EditorClassIdentifier: 
-  amount: 50
+  req: 0
+  id: 1
+  needamount: 5

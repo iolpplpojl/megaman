@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, Health
     public float health;
     public float Health { get => health; set => health = value; }
 
-
+    public static event Action<float> HealthChanged;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,15 +30,20 @@ public class PlayerHealth : MonoBehaviour, Health
         Health -= (Damage - PlayerStat.instance.armor);
 
         rb.Knockback(attacker);
+
+        HealthChanged?.Invoke(Health);
         if(Health < 0)
         {
             Destroy(gameObject);
         }
+        
     }
 
     public void getRawDamage(float Damage)
     {
         Health -= (Damage - PlayerStat.instance.armor);
+        HealthChanged?.Invoke(Health);
+
         if (Health < 0)
         {
             Destroy(gameObject);
@@ -50,6 +56,7 @@ public class PlayerHealth : MonoBehaviour, Health
         {
             health = PlayerStat.instance.maxHealth;
         }
+        HealthChanged?.Invoke(Health);
 
     }
     public void triggerOnHurt(float Damage, GameObject attacker)
