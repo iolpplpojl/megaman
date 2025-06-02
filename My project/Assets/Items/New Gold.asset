@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: New Semi Effect_Explosive
-  m_EditorClassIdentifier: Assembly-CSharp::SemiEffect_Explosive
-  damage: 0
+  m_Script: {fileID: 11500000, guid: d332df373b7fe5f4ab936221c1814b49, type: 3}
+  m_Name: New Gold
+  m_EditorClassIdentifier: 
+  id: 0
+  itemname: 
+  sprite: {fileID: 1907045320, guid: 898673d876135e341a005765054487b7, type: 3}
+  weight: 0
+  desc: 
+  amount: 100
