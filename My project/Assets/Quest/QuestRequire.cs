@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -7,5 +8,6 @@ public class QuestRequire : ScriptableObject
 {
     public Require req;
     public int id;
+    public List<int> firstQuest;
     public int needamount;
 }

@@ -9,8 +9,10 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-       instance = this;   
+        instance = this;   
         input = GetComponent<PlayerInput>();
     }
+
+
 
 }
