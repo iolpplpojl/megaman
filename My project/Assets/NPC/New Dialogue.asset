@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f1679d64321bc419773c1991e139ef, type: 3}
+  m_Name: New Dialogue
+  m_EditorClassIdentifier: 
+  needQuest: 
+  title: "\uC120\uD0DD \uB300\uD654"
+  line:
+  - text: "\uD14C\uC2A4\uD2B8 \uBA54\uC138\uC9C0\uC57C, \uC54C\uC9C0?\n"
+    choice: []
+  - text: "\uC120\uD0DD\uC9C0\uB97C \uC8FC\uB9C8.\n\uCCAB\uBC88\uC9F8\uB294 \uC544\uBB34\uAC83\uB3C4
+      \uC544\uB2D0\uAC70\uC57C.\n"
+    choice:
+    - {fileID: 11400000, guid: 5ba12e7145cc4244dbae7269eb0878dc, type: 2}
+    - {fileID: 11400000, guid: 6fd8b23199325a044a4201e083a21a36, type: 2}

@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d013e2a8a583b469cd1bc6607449ef, type: 3}
   m_Name: New NPC
   m_EditorClassIdentifier: 
-  greeting: []
-  dialogue:
-  - title: 
-    id: 1
-    text:
-    - "\uBC18\uAC11\uAE14"
-    - "\uC548\uB155\uD558\uC2DC\uAE14?"
-  quest: []
+  npcname: "\uD14C\uC2A4\uD130"
+  greeting:
+  - "\uC548\uB155?"
+  defaultLine: {fileID: 11400000, guid: 80f3b1d9891a775419cdaedec0db91b6, type: 2}
+  uniqueDialogue:
+  - {fileID: 11400000, guid: 7d814c089a8946343a66d0350f7b041d, type: 2}

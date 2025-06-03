@@ -357,6 +357,134 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI2",
+            "id": "6c2e8150-ea04-4bf6-bafe-249fb9db6b8b",
+            "actions": [
+                {
+                    "name": "RIGHT",
+                    "type": "Button",
+                    "id": "31d39eee-6d78-40b0-a5ac-117b55461958",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LEFT",
+                    "type": "Button",
+                    "id": "59e27c12-95c4-4ba8-b1a5-7dbb8cb7e438",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DOWN",
+                    "type": "Button",
+                    "id": "743d29aa-37c8-4cc7-a373-213336646b88",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UP",
+                    "type": "Button",
+                    "id": "b526c28c-5a69-403a-8c32-3ececffbdd04",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SELECT",
+                    "type": "Button",
+                    "id": "09ac950f-6569-47b4-884f-b461c5210a47",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CANCLE",
+                    "type": "Button",
+                    "id": "2793baa9-010d-421e-917f-4ecf00110a8f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "89509a9d-b15e-4fac-958f-314b4ea3a93a",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RIGHT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e36812de-8cc3-4f60-aa8a-ec2113197af1",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LEFT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a433333-fb9f-499f-8766-13acbb16e7cc",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DOWN",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1588aaa-6e5a-46f3-8aeb-1c4dabe47a91",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e46b11b-2ed9-4ff5-9511-3615609ad757",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SELECT",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b084d6e-7a93-4a1a-a044-d7c93d44ffd7",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CANCLE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -13,17 +13,21 @@ public class NPCBrain : MonoBehaviour
         }
     }
 
-
+    public void StartDialogue()
+    {
+        DialogueSystem.instance.SetDialogue(npc);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-            Debug.Log("NPC인식중!");
+        var o = collision.gameObject.GetComponent<PlayerAttack>();
+        o.NpcOn = this;
         
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-           Debug.Log("NPC인식범위나감!");
+        var o = collision.gameObject.GetComponent<PlayerAttack>();
+        o.NpcOn = null;
         
     }
 }

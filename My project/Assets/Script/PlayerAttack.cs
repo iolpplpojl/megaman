@@ -11,6 +11,11 @@ public class PlayerAttack : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
+    public NPCBrain NpcOn = null;
+
+    public
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -34,25 +39,32 @@ public class PlayerAttack : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("Attack");
-            animator.Play("player_snap", -1, 0f);
-            var hit = Physics2D.OverlapCapsuleAll(
-                    newAttackpos,
-                    new Vector2(attackRadius + PlayerStat.instance.range, attackRadius),
-                    CapsuleDirection2D.Horizontal,
-                    0f,
-                    LayerMask.GetMask("hitable")
-                );
-
-            if (hit.Length != 0)
+            if (NpcOn == null)
             {
-                PlayerEquipment.instance.weapon?.OnAttack(hit[0].gameObject, gameObject);
+                Debug.Log("Attack");
+                animator.Play("player_snap", -1, 0f);
+                var hit = Physics2D.OverlapCapsuleAll(
+                        newAttackpos,
+                        new Vector2(attackRadius + PlayerStat.instance.range, attackRadius),
+                        CapsuleDirection2D.Horizontal,
+                        0f,
+                        LayerMask.GetMask("hitable")
+                    );
+
+                if (hit.Length != 0)
+                {
+                    PlayerEquipment.instance.weapon?.OnAttack(hit[0].gameObject, gameObject);
+                }
+
+                foreach (var h in hit)
+                {
+                    PlayerEquipment.instance.weapon?.OnHit(h.gameObject, gameObject);
+                    h.GetComponent<hitable>().hit(transform.gameObject, PlayerStat.instance.damage);
+                }
             }
-
-            foreach(var h in hit)
+            else
             {
-                PlayerEquipment.instance.weapon?.OnHit(h.gameObject, gameObject);    
-                h.GetComponent<hitable>().hit(transform.gameObject, PlayerStat.instance.damage);
+                NpcOn.StartDialogue();
             }
         }
     }

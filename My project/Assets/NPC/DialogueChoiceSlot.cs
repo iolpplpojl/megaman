@@ -2,18 +2,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueSlot : MonoBehaviour
+public class DialogueChoiceSlot : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public int idx;
+    public DialogueChoice Dia;
     TMP_Text text;
     public bool selected = false;
     public Image img;
 
-    public void setUp(string textz)
+    public void setUp(DialogueChoice dia)
     {
+        Dia = dia;
         text = GetComponentInChildren<TMP_Text>();
-        text.text = textz;
+        text.text = Dia.text;
     }
 
     public void Update()

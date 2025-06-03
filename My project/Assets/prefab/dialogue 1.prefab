@@ -148,9 +148,8 @@ GameObject:
   - component: {fileID: 7418353598653484109}
   - component: {fileID: 7815217572155256954}
   - component: {fileID: 7129703944700000961}
-  - component: {fileID: -2558299587823437777}
   m_Layer: 5
-  m_Name: dialogue
+  m_Name: dialogue 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,18 +228,3 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
---- !u!114 &-2558299587823437777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5132626936524402310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d43bd7c89e9b3949a030ccf1386219e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Dia: {fileID: 0}
-  selected: 0
-  img: {fileID: 7815217572155256954}

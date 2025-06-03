@@ -5,9 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "NPC/Basic")]
 public class NPC : ScriptableObject
 {
+    public string npcname;
     public List<string> greeting;
-    public List<Dialogue> dialogue;
-    public List<Quest> quest;
+    public Dialogue defaultLine;
+    public List<Dialogue> uniqueDialogue;
     public virtual void setUp()
     {
 
@@ -18,10 +19,5 @@ public class NPC : ScriptableObject
     }
 }
 
-[System.Serializable]
-public class Dialogue
-{
-    public string title;
-    public int id;
-    public List<string> text;
-}
+
+

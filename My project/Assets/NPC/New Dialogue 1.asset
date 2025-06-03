@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f1679d64321bc419773c1991e139ef, type: 3}
+  m_Name: New Dialogue 1
+  m_EditorClassIdentifier: 
+  needQuest: 
+  title: "\uAE30\uBCF8 \uB300\uD654"
+  line:
+  - text: "\uBC18\uAC00\uC6CC, \uAE30\uBAAC \uBA54\uC138\uC9C0\uC57C"
+    choice: []
+  - text: "\uB531\uD788 \uBB54\uAC00 \uD2B9\uBCC4\uD55C\uAC74 \uC5C6\uC5B4."
+    choice: []
