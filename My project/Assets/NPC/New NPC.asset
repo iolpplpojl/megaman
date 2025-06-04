@@ -18,3 +18,4 @@ MonoBehaviour:
   defaultLine: {fileID: 11400000, guid: 80f3b1d9891a775419cdaedec0db91b6, type: 2}
   uniqueDialogue:
   - {fileID: 11400000, guid: 7d814c089a8946343a66d0350f7b041d, type: 2}
+  - {fileID: 11400000, guid: e9fc1f2aeb2b1624bbf45484e588513a, type: 2}

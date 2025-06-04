@@ -15,7 +15,12 @@ MonoBehaviour:
   needQuest: 
   title: "\uAE30\uBCF8 \uB300\uD654"
   line:
-  - text: "\uBC18\uAC00\uC6CC, \uAE30\uBAAC \uBA54\uC138\uC9C0\uC57C"
+  - isEndLine: 0
+    text: "\uBC18\uAC00\uC6CC, \uAE30\uBAAC \uBA54\uC138\uC9C0\uC57C"
     choice: []
-  - text: "\uB531\uD788 \uBB54\uAC00 \uD2B9\uBCC4\uD55C\uAC74 \uC5C6\uC5B4."
+  - isEndLine: 0
+    text: "\uB531\uD788 \uBB54\uAC00 \uD2B9\uBCC4\uD55C\uAC74 \uC5C6\uC5B4."
+    choice: []
+  - isEndLine: 1
+    text: "\uAEBC\uC838!"
     choice: []

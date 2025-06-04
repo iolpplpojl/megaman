@@ -15,6 +15,7 @@ public class Dialogue : ScriptableObject
 [System.Serializable]
 public class DialogueLine
 {
+    public bool isEndLine;
     [TextArea(2, 5)]
     public string text;
     public List<DialogueChoice> choice;

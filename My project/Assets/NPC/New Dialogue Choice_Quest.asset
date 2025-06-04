@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: New Dialogue Choice_Quest
   m_EditorClassIdentifier: 
   text: "\uD018\uC2A4\uD2B8\uC77C\uC9C0\uB3C4 \uBAB0\uB77C."
+  nextDialogue: {fileID: 11400000, guid: 19664699b7cf63143a445070d4064934, type: 2}
   quest: {fileID: 11400000, guid: cdd4c01f7d480a345934b1360be012f0, type: 2}

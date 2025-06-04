@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: New Dialogue Choice
   m_EditorClassIdentifier: 
   text: "\uC544\uBB34\uAC83\uB3C4 \uC544\uB0D0."
+  nextDialogue: {fileID: 11400000, guid: 5002e4c6ec518a442a17a2898e073dc7, type: 2}

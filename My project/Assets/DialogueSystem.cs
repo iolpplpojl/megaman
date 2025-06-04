@@ -1,9 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
+public enum DialogueStatment
+{
+    select,
+    tell,
+    choice,
+    none,
+    endTell,
+}
 public class DialogueSystem : MonoBehaviour
 {
 
@@ -22,10 +33,7 @@ public class DialogueSystem : MonoBehaviour
 
     NPC npc;
 
-    bool selecting = false;
-    bool telling = false;
-    bool choicing = false;
-
+    public DialogueStatment state;
 
     int idx = -1;
     int lineidx = 0;
@@ -41,6 +49,7 @@ public class DialogueSystem : MonoBehaviour
     public void SetDialogue(NPC npc)
     {
         this.npc = npc;
+        state = DialogueStatment.select;
         InputManager.instance.input.SwitchCurrentActionMap("UI2");
         dialobj.SetActive(!dialobj.activeSelf);
 
@@ -57,13 +66,15 @@ public class DialogueSystem : MonoBehaviour
             int i = 1;
             foreach (var a in npc.uniqueDialogue)
             {
-                GameObject o = Instantiate(pref, parent.transform);
-                o.GetComponent<DialogueSlot>().setUp(a.title);
-                slots.Add(o.GetComponent<DialogueSlot>());
-                i++;
+                if (a.needQuest.All(r => SaveDatabase.instance.data.progressId.Contains(r)))
+                {
+                    GameObject o = Instantiate(pref, parent.transform);
+                    o.GetComponent<DialogueSlot>().setUp(a.title);
+                    slots.Add(o.GetComponent<DialogueSlot>());
+                    i++;
+                }
             }
         }
-        selecting = true;
     }
 
     public void DoDialogue(Dialogue dial)
@@ -72,7 +83,6 @@ public class DialogueSystem : MonoBehaviour
         {
             Destroy(s.gameObject);
         }
-        selecting = false;
         lines = dial.line;
         lineidx = 0;
         NextLine();
@@ -80,14 +90,13 @@ public class DialogueSystem : MonoBehaviour
 
     public void NextLine()
     {
-        telling = true;
-        if(lineidx == lines.Count)
-        {
-            OffDialogue();
-            return;
-        }
+        state = DialogueStatment.tell;
         npctext.text = lines[lineidx].text;
         Debug.Log(lines[lineidx].text + lineidx);
+        if (lines[lineidx].isEndLine)
+        {
+            state = DialogueStatment.endTell;
+        }
         if (lines[lineidx].choice.Count != 0)
         {
             Debug.Log("�б⹮");
@@ -113,9 +122,8 @@ public class DialogueSystem : MonoBehaviour
            slots.Add(o.GetComponent<DialogueSlot>());
            choices.Add(a);
         }
-        telling = false;
-        selecting = true;
-        choicing = true;
+        state = DialogueStatment.choice;
+
         idx = -1;
     }
     public void OffDialogue()
@@ -126,9 +134,7 @@ public class DialogueSystem : MonoBehaviour
         }
         dialobj.SetActive(false);
         slots.Clear();
-        selecting = false;
-        telling = false;
-        choicing = false;
+        state = DialogueStatment.none;
         InputManager.instance.input.SwitchCurrentActionMap("Player");
         idx = -1;
     }
@@ -139,7 +145,7 @@ public class DialogueSystem : MonoBehaviour
         {
             Debug.Log(idx);
 
-            if (selecting)
+            if (state == DialogueStatment.select || state == DialogueStatment.choice)
             {
                 if(idx > 0)
                 {
@@ -160,7 +166,7 @@ public class DialogueSystem : MonoBehaviour
         if (context.started)
         {
             Debug.Log(idx);
-            if (selecting)
+            if (state == DialogueStatment.select || state == DialogueStatment.choice)
             {
                 if (idx < slots.Count -1)
                 {
@@ -178,40 +184,43 @@ public class DialogueSystem : MonoBehaviour
     {
         if (context.started)
         {
-            if (selecting)
+
+            if (idx != -1)
             {
-                if (!telling)
+                if (state == DialogueStatment.select)
                 {
-                    if (idx != -1)
+                    if (idx == 0)
                     {
-                        if (!choicing)
-                        {
-                            if (idx == 0)
-                            {
-                                DoDialogue(npc.defaultLine);
-                            }
-                            else
-                            {
-                                DoDialogue(npc.uniqueDialogue[idx - 1]);
-                            }
-                        }
-                        else
-                        {
-                            choices[idx].Select();
-                            OffDialogue();
-                        }
+                        DoDialogue(npc.defaultLine);
+                        return;
+                    }
+                    else
+                    {
+                        DoDialogue(npc.uniqueDialogue[idx - 1]);
+                        return;
                     }
                 }
 
-            }
-            else
-            {
-                if (telling)
+                if (state == DialogueStatment.choice)
                 {
-                    NextLine();
-                }
-
+                    choices[idx].Select();
+                    DoDialogue(choices[idx].nextDialogue);
+                    return;
+                }                
             }
+
+            if (state == DialogueStatment.tell)
+            {
+
+                NextLine();
+                return;
+            }
+            if(state == DialogueStatment.endTell)
+            {
+                OffDialogue();
+                return;
+            }
+
         }
     }
     public void OnCancel(InputAction.CallbackContext context)
