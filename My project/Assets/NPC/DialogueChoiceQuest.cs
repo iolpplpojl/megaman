@@ -4,6 +4,8 @@ using UnityEngine;
 public class DialogueChoice_Quest : DialogueChoice
 {
     public Quest quest;
+
+
     public override void Select()
     {
         QuestManager.instance.QuestStart(quest);

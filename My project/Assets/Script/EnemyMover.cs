@@ -6,7 +6,7 @@ public class EnemyMover : MonoBehaviour
     public Transform Target;
     Rigidbody2D rb;
     public float find;
-    bool isFind = false;
+    public bool isFind = false;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,27 +19,27 @@ public class EnemyMover : MonoBehaviour
     public float jump;
     private void Update()
     {
-        if(isFind == false)
+        var hit = Physics2D.OverlapCircle(transform.position, find, LayerMask.GetMask("player"));
+        if (hit != null)
         {
-            var hit = Physics2D.OverlapCircle(transform.position, find, LayerMask.GetMask("player"));
-            if (hit != null)
-            {
-                isFind = true;
-            }
+            isFind = true;
         }
+    }
 
+    public void Move()
+    {
         if (hit <= 0 && isFind == true)
         {
             Vector2 nor = (new Vector2(Target.position.x, 0) - new Vector2(transform.position.x, 0)).normalized;
             rb.linearVelocity = new Vector2((nor * speed).x, rb.linearVelocity.y);
-            
-        }
-        else
-        {
-            hit -= Time.fixedDeltaTime;
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (hit > 0)
+            hit -= Time.fixedDeltaTime;
+    }
     public float hitDelay;
     public void onHit()
     {
