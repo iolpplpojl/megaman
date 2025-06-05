@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a7752dc0950e64c83ea7b86cb7a595, type: 3}
+  m_Name: New Weapon
+  m_EditorClassIdentifier: 
+  id: 0
+  itemname: "\uD3ED\uBC1C\uD0C4"
+  sprite: {fileID: -2676911970162492467, guid: fe04cfa7101aa1544966b195839991cf, type: 3}
+  weight: 0
+  desc: 
+  health: 0
+  armor: 0
+  effects:
+  - {fileID: 11400000, guid: 868cebad288bc4c4486a1615ef760206, type: 2}
+  damage: 5
+  range: 2
+  speed: 0

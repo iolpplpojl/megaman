@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effect/CountsAttack")]
 public class Effect_CountsAttack : Effect{ // ?번 공격 적중 성공시 ? 효과
     public int AttackMaxCount = 3;
-    public float Damage;
-    int AttackCount = 1;
+    int AttackCount = 0;
 
     public List<SemiEffect> effect;
     List<SemiEffect> cEffect = new List<SemiEffect>();

@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour,Health
 
     public void getRawDamage(float Damage)
     {
+        Debug.Log($"getRaw : {Damage}");
         Health -= (Damage - PlayerStat.instance.armor);
         if (Health < 0)
         {
